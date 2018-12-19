@@ -3,5 +3,11 @@
   <input #carName id="carName">
   <label for="carModel">Car model</label>
   <input #carModel id="carModel">
-  <button>Add</button>
+  <button (click)="onAdd(carName.value, carModel.value)">Add</button>
+</div>
+<div>
+  <app-car
+    *ngFor = "let car of cars"
+    [car]="car"
+    (deleteCar)="deleteCar($event)"></app-car>
 </div>
