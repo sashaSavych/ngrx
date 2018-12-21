@@ -1,5 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Car } from './car.model';
+import { AppState } from '../../redux/app.state';
+import { Store } from '@ngrx/store';
+import { DeleteCar, UpdateCar } from '../../redux/cars.action';
 
 @Component({
   selector: 'app-car',
@@ -8,9 +11,14 @@ import { Car } from './car.model';
 })
 export class CarComponent {
   @Input() car: Car;
-  @Output() deleteCar = new EventEmitter<Car>();
 
-  public onDeleteCar(car: Car): void {
-    this.deleteCar.emit(car);
+  constructor(private store: Store<AppState>) {}
+
+  public deleteCar(): void {
+    this.store.dispatch(new DeleteCar(this.car));
+  }
+
+  public buyCar(): void {
+    this.store.dispatch(new UpdateCar(this.car));
   }
 }

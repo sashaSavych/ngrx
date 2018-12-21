@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Car } from './components/car/car.model';
+
 import { Store } from '@ngrx/store';
 import { AppState } from './redux/app.state';
+
 import { Observable } from 'rxjs';
+
+import { Car } from './components/car/car.model';
+import { AddCar } from './redux/cars.action';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +14,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  cars: Car[] = [];
   carsState$: Observable<AppState>;
   id = 4;
 
@@ -21,13 +24,8 @@ export class AppComponent implements OnInit {
   }
 
   public onAdd(name: string, model: string): void {
+    ++this.id;
     const newCar: Car = new Car(name, model, new Date().toLocaleDateString(), false, this.id);
-    this.cars.push(newCar);
-
-    this.id++;
-  }
-
-  public deleteCar(car: Car): void {
-    this.cars = this.cars.filter(carItem => carItem.id !== car.id);
+    this.store.dispatch(new AddCar(newCar));
   }
 }

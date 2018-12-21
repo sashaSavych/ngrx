@@ -3,7 +3,7 @@
   <span>{{car.name}} {{car.model}}</span>
   <p>{{car.date}}</p>
   <label for="isSold">Is sold</label>
-  <input id="isSold" type="checkbox" [checked]="car.isSold" (change)="car.isSold = !car.isSold">
+  <input id="isSold" type="checkbox" [checked]="car.isSold" (change)="buyCar()">
   <br>
-  <button (click)="onDeleteCar(car)">Delete</button>
+  <button (click)="deleteCar()">Delete</button>
 </div>

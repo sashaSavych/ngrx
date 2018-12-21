@@ -8,6 +8,5 @@
 <div>
   <app-car
     *ngFor = "let car of (carsState$ | async).cars"
-    [car]="car"
-    (deleteCar)="deleteCar($event)"></app-car>
+    [car]="car"></app-car>
 </div>
