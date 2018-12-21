@@ -6,7 +6,7 @@ import { AppState } from './redux/app.state';
 import { Observable } from 'rxjs';
 
 import { Car } from './components/car/car.model';
-import { AddCar } from './redux/cars.action';
+import { CarsService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -15,17 +15,19 @@ import { AddCar } from './redux/cars.action';
 })
 export class AppComponent implements OnInit {
   carsState$: Observable<AppState>;
-  id = 4;
 
-  constructor(private store: Store<Car[]>) {}
+  constructor(private store: Store<Car[]>, private carsService: CarsService) {}
 
   ngOnInit() {
     this.carsState$ = this.store.select('carPage');
   }
 
   public onAdd(name: string, model: string): void {
-    ++this.id;
-    const newCar: Car = new Car(name, model, new Date().toLocaleDateString(), false, this.id);
-    this.store.dispatch(new AddCar(newCar));
+    const newCar: Car = new Car(name, model, new Date().toLocaleDateString());
+    this.carsService.addCar(newCar);
+  }
+
+  public onLoad(): void {
+    this.carsService.loadCars();
   }
 }

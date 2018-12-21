@@ -1,11 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { StoreModule } from '@ngrx/store';
 import { carsReducer } from './redux/cars.reducer';
 
 import { AppComponent } from './app.component';
 import { CarComponent } from './components/car/car.component';
+import { CarsService } from './app.service';
 
 @NgModule({
   declarations: [
@@ -14,9 +16,10 @@ import { CarComponent } from './components/car/car.component';
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({carPage: carsReducer})
+    StoreModule.forRoot({carPage: carsReducer}),
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [CarsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

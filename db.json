@@ -1,16 +1,39 @@
 {
   "cars": [
     {
-      "id": 1,
-      "name": "Ford",
-      "model": "Mondeo",
-      "date": "12.12.06"
-    },
-    {
       "id": 2,
       "name": "Mazda",
       "model": "6",
-      "date": "12.02.06"
+      "date": "12.02.06",
+      "isSold": false
+    },
+    {
+      "name": "Skoda",
+      "model": "Fabia",
+      "date": "12/21/2018",
+      "isSold": true,
+      "id": 3
+    },
+    {
+      "name": "Kia",
+      "model": "Rio",
+      "date": "12/21/2018",
+      "isSold": false,
+      "id": 4
+    },
+    {
+      "name": "Nissan",
+      "model": "Micra",
+      "date": "12/21/2018",
+      "isSold": false,
+      "id": 5
+    },
+    {
+      "name": "Mazda",
+      "model": "3",
+      "date": "12/21/2018",
+      "isSold": false,
+      "id": 6
     }
   ]
 }
