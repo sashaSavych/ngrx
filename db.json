@@ -8,13 +8,6 @@
       "isSold": false
     },
     {
-      "name": "Skoda",
-      "model": "Fabia",
-      "date": "12/21/2018",
-      "isSold": true,
-      "id": 3
-    },
-    {
       "name": "Kia",
       "model": "Rio",
       "date": "12/21/2018",
@@ -34,6 +27,13 @@
       "date": "12/21/2018",
       "isSold": false,
       "id": 6
+    },
+    {
+      "name": "",
+      "model": "",
+      "date": "12/26/2018",
+      "isSold": false,
+      "id": 7
     }
   ]
 }
