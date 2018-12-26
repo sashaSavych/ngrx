@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from './redux/app.state';
 import { AddCar, DeleteCar, LoadCars, UpdateCar } from './redux/cars.action';
 import { Car } from './components/car/car.model';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class CarsService {
@@ -12,8 +13,12 @@ export class CarsService {
 
   constructor(private httpClient: HttpClient, private store: Store<AppState>) { }
 
+  preloadCars(): Observable<Car[]> {
+    return this.httpClient.get<Car[]>(CarsService.BASE_URL + 'cars');
+  }
+
   loadCars(): void {
-    this.httpClient.get(CarsService.BASE_URL + 'cars')
+    this.preloadCars()
       .subscribe((cars: Car[]) => this.store.dispatch(new LoadCars(cars)));
   }
 
